@@ -1,0 +1,23 @@
+import sys
+import datetime
+
+
+def convert_to_seconds(time_str):
+    time_str = time_str.lower()
+    num = int(time_str[:-1])
+    if time_str.endswith('s'):
+        return datetime.timedelta(seconds=num).total_seconds()
+    elif time_str.endswith('m'):
+        return datetime.timedelta(minutes=num).total_seconds()
+    elif time_str.endswith('h'):
+        return datetime.timedelta(hours=num).total_seconds()
+    elif time_str.endswith('d'):
+        return datetime.timedelta(days=num).total_seconds()
+
+
+while True:
+    line = sys.stdin.readline()
+    line = line.strip()
+    if line == '':
+        break
+    print(convert_to_seconds(line)
